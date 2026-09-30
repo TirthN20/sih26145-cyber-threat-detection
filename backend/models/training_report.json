@@ -1,0 +1,177 @@
+{
+  "logistic_regression": {
+    "accuracy": 1.0,
+    "features": [
+      "max_rate_5s",
+      "avg_packet_size"
+    ],
+    "test_size": 59
+  },
+  "decision_tree": {
+    "accuracy": 1.0,
+    "features": [
+      "max_rate_5s",
+      "max_distinct_ports_30s"
+    ],
+    "test_size": 33,
+    "tree_depth": 2
+  },
+  "random_forest": {
+    "accuracy": 1.0,
+    "features": [
+      "packet_count",
+      "session_duration",
+      "max_rate_5s",
+      "max_distinct_ports_30s",
+      "dns_count",
+      "dns_timing_cv",
+      "dns_avg_entropy",
+      "gap_top2_share",
+      "gap_separation_ratio",
+      "avg_packet_size",
+      "tcp_ratio",
+      "has_bad_ja3"
+    ],
+    "test_size": 59,
+    "feature_importances": {
+      "packet_count": 0.0693,
+      "session_duration": 0.1115,
+      "max_rate_5s": 0.1213,
+      "max_distinct_ports_30s": 0.116,
+      "dns_count": 0.0343,
+      "dns_timing_cv": 0.0243,
+      "dns_avg_entropy": 0.0282,
+      "gap_top2_share": 0.1419,
+      "gap_separation_ratio": 0.1074,
+      "avg_packet_size": 0.1002,
+      "tcp_ratio": 0.1033,
+      "has_bad_ja3": 0.0422
+    },
+    "classification_report": {
+      "Covert Timing Channel (hidden data exfiltration)": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 8.0
+      },
+      "DNS Tunneling / C2 Beaconing": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "Encrypted C2 (malicious TLS fingerprint)": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "Flood / DoS": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "Normal": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 15.0
+      },
+      "Port Scan / Reconnaissance": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 59.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 59.0
+      }
+    }
+  },
+  "naive_bayes": {
+    "accuracy": 0.9864,
+    "features": "char 2-3grams of domain string",
+    "test_size": 2500,
+    "training_domains": 10000
+  },
+  "isolation_forest": {
+    "accuracy_vs_attack_labels": 0.9872,
+    "features": [
+      "packet_count",
+      "session_duration",
+      "max_rate_5s",
+      "max_distinct_ports_30s",
+      "dns_count",
+      "dns_timing_cv",
+      "dns_avg_entropy",
+      "gap_top2_share",
+      "gap_separation_ratio",
+      "avg_packet_size",
+      "tcp_ratio",
+      "has_bad_ja3"
+    ],
+    "trained_on": "normal traffic only (unsupervised)",
+    "n_normal_train": 60
+  },
+  "kmeans": {
+    "k": 6,
+    "silhouette_score": 0.6812,
+    "features": [
+      "packet_count",
+      "max_rate_5s",
+      "max_distinct_ports_30s",
+      "dns_count",
+      "session_duration",
+      "avg_packet_size"
+    ],
+    "clusters": [
+      {
+        "cluster": 0,
+        "size": 70,
+        "dominant_label": "Normal",
+        "purity": 0.857
+      },
+      {
+        "cluster": 1,
+        "size": 35,
+        "dominant_label": "Port Scan / Reconnaissance",
+        "purity": 1.0
+      },
+      {
+        "cluster": 2,
+        "size": 17,
+        "dominant_label": "Flood / DoS",
+        "purity": 1.0
+      },
+      {
+        "cluster": 3,
+        "size": 35,
+        "dominant_label": "DNS Tunneling / C2 Beaconing",
+        "purity": 1.0
+      },
+      {
+        "cluster": 4,
+        "size": 60,
+        "dominant_label": "Covert Timing Channel (hidden data exfiltration)",
+        "purity": 0.583
+      },
+      {
+        "cluster": 5,
+        "size": 18,
+        "dominant_label": "Flood / DoS",
+        "purity": 1.0
+      }
+    ]
+  }
+}

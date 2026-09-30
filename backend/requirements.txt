@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+pydantic
+
+# MySQL backend
+pymysql
+cryptography
+
+# ML models
+scikit-learn
+joblib
